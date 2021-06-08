@@ -1,8 +1,8 @@
 const app = [];
 
-const variables = ['alignment', 'race', 'classe', 'monster', 'weapon', 'spell', 'skill', 'condition']
+const variables = ['alignments', 'races', 'classes', 'monsters', 'weapon', 'spells', 'skills', 'conditions']
 
-//  0.  Choose each variable and submit to functions
+//  Choose each variable and submit to functions
 
 app.callNewItems = function() {
   variables.forEach(function(variable){
@@ -10,12 +10,12 @@ app.callNewItems = function() {
   });
 }
 
-//  1.  Get variable API path
+//  Get variable API path
 
 app.getVariableArray = function(variable) {
   if(variable !='weapon') {
     $.ajax({
-      url: `https://www.dnd5eapi.co/api/${variable}s`,
+      url: `https://www.dnd5eapi.co/api/${variable}`,
       method: 'GET',
       dataType: 'json',
     }).then(function(data) {
@@ -34,7 +34,7 @@ app.getVariableArray = function(variable) {
   }
 }
 
-//  2.  Select random item from array
+//  Select random item from array
 
 app.getRandomFromArray = function(data, variable) {
   randomIndex = Math.floor(Math.random() * data.length);
@@ -42,11 +42,13 @@ app.getRandomFromArray = function(data, variable) {
   app.showItemsToUser(selectedItem.name, variable);
 }
 
-//  3.  Return item name in DOM
+//  Return item name in DOM
 
 app.showItemsToUser = function(item, variable){
   $(`.${variable}`).text(item);
 }
+
+//  init and document ready setup
 
 app.init = function(){
   app.callNewItems();

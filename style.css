@@ -30,6 +30,7 @@ h1 {
   font-weight: 700;
   text-align: center;
   margin: 0 auto;
+  text-shadow: 4px 4px 2px black;
 }
 
 span {
@@ -69,6 +70,7 @@ span {
 }
 
 .button {
+  margin-top: 75px;
   text-align: center;
 }
 
